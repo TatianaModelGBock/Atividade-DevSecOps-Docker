@@ -196,6 +196,41 @@ docker logs <id-do-conteiner>
 #### Concluir a Instalação do WordPress:
 - Siga as instruções na tela para configurar o WordPress.
 
+### Resumo da Instalação do WordPress com Docker e Docker Compose
+
+Após rodar o comando `docker compose up -d`, o WordPress estará em funcionamento. Para concluir a instalação, siga os passos abaixo:
+
+1. **Acessar o WordPress no Navegador**:
+   - Acesse o endereço `http://<DNS-do-Load-Balancer` no navegador.
+
+2. **Configuração Inicial**:
+   - Escolha o idioma (ex: "Português do Brasil").
+   - O WordPress buscará automaticamente as configurações do banco de dados a partir das variáveis no `docker-compose.yaml`.
+   - Caso necessário, insira manualmente as informações:
+     - **Nome do Banco de Dados**
+     - **Usuário**
+     - **Senha**
+     - **Host**
+
+3. **Configuração do Site**:
+   - Preencha as informações do site:
+     - **Título do site**
+     - **Nome de usuário e senha do administrador**
+     - **E-mail do administrador**
+     - **Visibilidade do site** (geralmente, público)
+
+4. **Finalizar a Instalação**:
+   - Clique em "Instalar WordPress".
+   - Após a instalação, você verá a mensagem de sucesso.
+
+5. **Login no WordPress**:
+   - Acesse o painel de administração em `http://<seu_ip>/wp-admin`.
+   - Use as credenciais do administrador para configurar seu site.
+
+---
+
+**Nota**: O processo de instalação do WordPress é basicamente a configuração do idioma, banco de dados, título do site e credenciais de administrador.
+
 
 
 
