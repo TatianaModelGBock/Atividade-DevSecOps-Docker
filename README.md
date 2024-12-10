@@ -231,6 +231,6 @@ Após rodar o comando `docker compose up -d`, o WordPress estará em funcionamen
 ---
 
 **Nota**: O processo de instalação do WordPress é basicamente a configuração do idioma, banco de dados, título do site e credenciais de administrador.
-organiza pra por favor
+
 
 
