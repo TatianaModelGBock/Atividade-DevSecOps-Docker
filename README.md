@@ -6,6 +6,17 @@
 > Este projeto visa simplificar e automatizar a implantação de uma aplicação WordPress na AWS, utilizando contêineres Docker para criar uma infraestrutura escalável e confiável. A solução inclui Amazon EFS para armazenamento de arquivos estáticos, Amazon RDS para o banco de dados MySQL e Elastic Load Balancer para gestão eficiente do tráfego. Bem documentado, o projeto é fácil de replicar e adaptar.
 
 
+* Requisitos necessários
+* passo a passo
+    * Configuração da VPC
+    *  Configuração das Subnets
+    *  Configuração do Internet Gateway
+    *  Configuração do NAT Gateway
+    *  Configuração das Tabelas de Roteamento
+    *  Configuração dos Security Groups
+    *  Lançamento da Instância EC2 Privada
+    * Configuração do EFS - sistema Amazon Elastic File
+    * 
 
 -----
 ###  Acessar o Console da AWS
@@ -108,7 +119,33 @@
 
 ---
 
-### 8. Configuração do RDS MySQL
+
+### 8. Configuração do EFS - sistema Amazon Elastic File
+- Criar sistema de arquivos
+
+personalizar
+
+- **Nome**: novoefs (nome da sua preferência)
+
+- **VPC**: projetocompass-vpc (montar na sua VPC)
+
+- **VPC**: Áreas privativas 1a e 1b
+
+- **Grupo de Segurança**: meuefs (nome da sua preferência)
+
+
+### 9. Envio do pacote no terminal
+```sudo apt install nfs-common -y```
+
+Criar ponto de montagem do EFS
+
+```mkdir -p /efs sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-(copiar o efs do console).efs.us-east-1.amazonaws.com:/ /efs```
+
+ ```sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose```
+
+ ```sudo chmod +x /usr/local/bin/docker-compose```
+ 
+### 10. Configuração do RDS MySQL
 - **Engine**: MySQL  
 - **Versão**: Compatível com o WordPress  
 - **Instância**: db.t2.micro  
@@ -122,7 +159,7 @@
 
 ---
 
-### 9. Configuração do Load Balancer
+### 11. Configuração do Load Balancer
 - **Nome**:wordpress-LoadBalancer 
 - **VPC**: vpcwordpress-vpc  
 - **Subnets**: Subnet-Publica  
@@ -130,7 +167,7 @@
 
 ---
 
-### 10. Implantação do WordPress com Docker
+### 12. Implantação do WordPress com Docker
 #### Instalar Docker e Docker Compose:
 ```bash
 sudo amazon-linux-extras install docker -y
@@ -171,7 +208,7 @@ docker logs <id-do-conteiner>
 
 ---
 
-### 11. Testes e Validação
+### 13. Testes e Validação
 #### Verificar o Status do Load Balancer:
 - Certifique-se de que a instância está **InService**.
 
@@ -216,6 +253,3 @@ Após rodar o comando `docker compose up -d`, o WordPress estará em funcionamen
 ---
 
 **Nota**: O processo de instalação do WordPress é basicamente a configuração do idioma, banco de dados, título do site e credenciais de administrador.
-
-
-
