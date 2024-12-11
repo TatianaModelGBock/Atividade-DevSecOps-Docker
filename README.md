@@ -127,15 +127,6 @@
 - **VPC**: vpcwordpress-vpc  
 - **Subnets**: Subnet-Publica  
 - **Security Group**: wordwpress-LoadBalancer
-- 
-**No Console da AWS:**
-1. Acesse o serviço **EC2**, em **Load Balancers**.
-2. Configure o **Health Check**:  
-   - Ping Protocol: HTTP  
-   - Ping Port: 80  
-   - Ping Path: /healthcheck.html  
-
-3. Adicione a instância EC2 privada.
 
 ---
 
@@ -170,12 +161,6 @@ services:
 mkdir ~/wp && cd ~/wp
 sudo vim docker-compose.yml  # Cole o conteúdo acima
 docker-compose up -d
-```
-
-#### Criar o Arquivo `healthcheck.html`:
-```bash
-sudo touch healthcheck.html
-echo "OK" > /healthcheck.html
 ```
 
 #### Verificar logs e status:
