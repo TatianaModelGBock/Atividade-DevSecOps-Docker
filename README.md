@@ -8,15 +8,15 @@
 
 * Requisitos necessários
 * passo a passo
-    * Configuração da VPC
+    *  Configuração da VPC
     *  Configuração das Subnets
     *  Configuração do Internet Gateway
     *  Configuração do NAT Gateway
     *  Configuração das Tabelas de Roteamento
     *  Configuração dos Security Groups
     *  Lançamento da Instância EC2 Privada
-    * Configuração do EFS - sistema Amazon Elastic File
-    * 
+    *  Configuração do EFS - sistema Amazon Elastic File
+    *  Confiuração do Auto Scaling
 
 -----
 ###  Acessar o Console da AWS
@@ -251,5 +251,50 @@ Após rodar o comando `docker compose up -d`, o WordPress estará em funcionamen
 
 
 ---
+
+### 14. Auto Scaling
+#### Configuração.
+
+- Criar o grupo de auto scaling.
+
+ - Etapa 1 (inicial)
+
+- Nome (nome de sua preferência)
+
+- Modelo de execução (colocar modelo salvo no tamplede)
+
+- Versão (sempre a ultima)(latest)
+
+- Etapa 2 (VPC e Subnet)
+
+- Rede (colocar a VPC salva: projetocompass-vpc)
+
+- Subredes (colocar as privada1 e privada2)
+
+- Etapa 3 (load balance)
+
+- Balanceamento de carga
+Anexar a um load balance existente (adicionar o load balance que vc criou)
+
+- Opções de integração do VPC Lattice
+Serviço VPC Lattice não disponível
+
+- Etapa 4 (configuração do Cluster)
+
+- Tamanho do grupo
+
+- Capacidade desejada (2)
+
+- Escalabilidade
+
+- Capacidade mínima desejada (2)
+
+- Capacidade maxima desejada (4)
+
+- Ajuste de escala automática - opcional - Nenhuma olitica de escalabilidade
+
+- Política de manutenção de instâncias - Nenhuma politica
+
+As demais opções, não marcar nada, e ir clicando em proximo até chegar na parte de criar auto scaling.
 
 **Nota**: O processo de instalação do WordPress é basicamente a configuração do idioma, banco de dados, título do site e credenciais de administrador.
